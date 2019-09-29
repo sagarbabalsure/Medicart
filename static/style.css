@@ -1,0 +1,62 @@
+.home_banner_area {
+  background: url(img/banner/home.jpg)no-repeat ;
+  position: relative;
+  background-size: 1500px;
+  z-index: 1;
+  height: 700px; }
+  .home_banner_area .banner_inner {
+    position: relative;
+    width: 100%;
+    min-height: 500px; }
+    .home_banner_area .banner_inner .banner_content {
+      color: #000000;
+      align-self: center;
+     }
+      .home_banner_area .banner_inner .banner_content h1 {
+        font-size: 48px;
+        max-width: 520px;
+        color: #ffffff;
+        margin: 0; }
+      .home_banner_area .banner_inner .banner_content p {
+        font-size: 14px;
+        line-height: 24px;
+        font-family: "Roboto", sans-serif;
+        font-weight: normal;
+        color: #ffffff;
+        max-width: 498px;
+        margin: 0; }
+        .home_banner_area .banner_inner .banner_content .main_btn{
+          border:1px solid blue;
+          padding: 5px;
+          font-size: 20px;
+          border-style: groove;
+          border-radius:5px;
+        }
+      .home_banner_area .banner_inner .banner_content .main_btn:hover {
+        background: #faabbb;
+        border: 1px solid #faabbb;
+        text-decoration: none; }
+        a{
+          text-decoration: none;
+        }
+     
+.banner-content {
+  text-align: center; }
+  .banner-content h1 {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1em;
+     }
+    .banner-content h1 span {
+      font-weight: 700; }
+      @media (max-width: 414px) {
+      .banner-content h1 {
+        font-size: 40px; } }
+  .banner-content h4 {
+    font-weight: 400;
+    letter-spacing: 3px; }
+
+    .about_site{
+      margin: 0px 200px 0px 200px;
+    }
