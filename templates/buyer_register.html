@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration form</title>
+	<style type="text/css">
+	 	body{
+			background-color: lightblue;
+		}
+		h2{
+			color: black;
+			text-align: center;
+		 }
+		.buyer_form{
+			position: absolute;
+			left: 38%;
+			top: 10%;
+		}
+		.input-field{
+			width: 120%;
+			height: 25px;
+			border: 1px solid;
+			border-radius:10px;
+			padding: 5px;
+		}
+		.btn{
+			width: 125%;
+			height:35px;
+			border-radius: 10px;
+			background-color: black;
+			color: white;
+			font-size: 20px;
+		}
+		.login-label{
+			font-size: 20px;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="buyer_form">
+		<h2>Register</h2>
+		<form action="" method="POST" novalidate>
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.name.label(class_="input-label") }}<br>
+				{{ form.name(size=30,class_="input-field",placeholder="Name") }}<br>
+				{% for error in form.name.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.username.label(class_="input-label") }}<br>
+				{{ form.username(size=30,class_="input-field",placeholder="Username") }}<br>
+				{% for error in form.username.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.email.label(class_="input-label") }}<br>
+				{{ form.email(size=30,class_="input-field",placeholder="Email") }}<br>
+				{% for error in form.email.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.password.label(class_="input-label") }}<br>
+				{{ form.password(size=30,class_="input-field",placeholder="Password") }}<br>
+				{% for error in form.password.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.password2.label(class_="input-label") }}<br>
+				{{ form.password2(size=30,class_="input-field",placeholder="Confirm Password") }}<br>
+				{% for error in form.password2.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.submit(class_="btn") }}
+			</p>
+		</form>
+		<div>
+			{% with reg_msgs=get_flashed_messages() %}
+			{% if reg_msgs %}
+				{% for msg in reg_msgs %}
+					{{ msg }}
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login to Buy</title>
+	<link rel="stylesheet" type="text/css" href="static/buyer-form.css">
+	 <style type="text/css">
+	 	body{
+			background-color: lightblue;
+		}
+		h2{
+			color: black;
+			text-align: center;
+		 }
+		.buyer_form{
+			position: absolute;
+			left: 38%;
+			top: 20%;
+		}
+		.input-field{
+			width: 120%;
+			height: 25px;
+			border: 1px solid;
+			border-radius:10px;
+			padding: 5px;
+		}
+		.btn{
+			width: 125%;
+			height:35px;
+			border-radius: 10px;
+			background-color: black;
+			color: white;
+			font-size: 20px;
+		}
+		.login-label{
+			font-size: 20px;
+			color: black;
+		}
+	 </style>
+</head>
+<body>
+	<div class="buyer_form">
+		<h2>Buyer Login</h2>
+		<form action="" method="POST" novalidate>
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.username.label(class_="login-label") }}<br>
+				{{ form.username(size=30,class_="input-field",placeholder="username") }}<br>
+				{% for error in form.username.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+
+			<p>
+				{{ form.password.label(class_="login-label") }}<br>
+				{{ form.password(size=30,class_="input-field",placeholder="password") }}<br>
+				{% for error in form.password.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.submit(class_="btn") }}
+			</p>
+		</form>
+		<p style="font-size: 20px; font-style: italic;">New Member?<a href="{{ url_for('buyer_register') }}">Register here</a> </p>
+		<div >
+			{% if error %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endif %}
+		</div>
+		<div>
+		{% with login_msgs=get_flashed_messages() %}
+			{% if login_msgs %}
+				{% for msg in login_msgs %}
+					{{ msg }}
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	</div>
+	</div>
+	
+	
+
+</body>
+</html>
