@@ -1,0 +1,64 @@
+{% extends 'buyer_homepage.html' %}
+{% block head %}
+	{{ super() }}
+	<style type="text/css">
+		.choose-medicine{
+			border: groove;
+			border-radius: 15px;
+			background-color: lightblue;
+			padding: 10px;
+			color: black;
+			width: 260px;
+			height: 300px;
+
+		}
+		.multiple-div{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+
+		}
+		a{
+			text-decoration: none;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	{% if homepage_data %}
+		<div class="multiple-div">
+		 {% for row in homepage_data %}
+		 <a href="{{ url_for('product_page',product_id=row['product_id']) }}">
+		 	<div class="choose-medicine">
+		 		<h3>{{row["medicine_name"]}}</h3>
+		 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
+		 		<p><b style="font-size: 20px;">Rs.{{row["price"]}}</b>(per unit)</p>
+		 		<p><b>Available Stock: </b>{{row["stock"]}}</p>
+		 		<p>Description:{{row['description']}}</p>
+		 	</div>
+		 </a>
+		 	
+         {% endfor %}
+	</div>
+	{% else %}
+	<p>Search results are...</p><hr>
+	<div class="multiple-div">
+		 {% for row in searched_data %}
+		 	{% if row %}
+				 <a href="{{ url_for('product_page',product_id=row['product_id']) }}">
+				 	<div class="choose-medicine">
+				 		<h3>{{row["medicine_name"]}}</h3>
+				 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
+				 		<p><b style="font-size: 20px;">Rs.{{row["price"]}}</b>(per unit)</p>
+				 		<p>Description:{{row['description']}}</p>
+				 	</div>
+				 </a>
+			 {% else %}
+			 	<p>No results found</p>
+			 {% endif %}
+		 	
+         {% endfor %}
+	</div>
+	{% endif %}
+		
+{% endblock%}

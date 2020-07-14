@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cart</title>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+			border:1px solid black;
+			padding: 10px;
+			font-weight: bold;
+		}
+		a:hover{
+			background-color: orange;
+		}
+		.choose-medicine{
+			border: groove;
+			border-radius: 15px;
+			background-color: lightblue;
+			padding: 10px;
+			color: black;
+			width: 260px;
+			height: 300px;
+
+		}
+		.multiple-div{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+
+		}
+		.links{
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="multiple-div">
+		{% for rows in data %}
+			{% for row in rows %}
+				<div class="choose-medicine">
+			 		<h3>{{row["medicine_name"]}}</h3>
+			 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
+			 		<p><b style="font-size: 20px;">Rs.{{row["price"]}}</b>(per unit)</p>
+			 		<p>Description:{{row['description']}}</p>
+			 		<div class="links">
+			 			<a href="{{ url_for('buy',product_id=row['product_id']) }}">Buy</a>
+			 			<a href="{{ url_for('remove_from_cart',product_id=row['product_id'])}}">Remove</a>
+			 		</div>
+		 		</div>
+			{% endfor %}<hr>
+		{% endfor %}<br>
+	</div>
+</body>
+</html>

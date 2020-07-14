@@ -1,0 +1,31 @@
+body{
+	background-color: lightblue;
+}
+h2{
+	color: black;
+	text-align: center;
+ }
+.buyer_form{
+		position: absolute;
+		left: 38%;
+		top: 20%;
+	}	
+.input-field{
+	width: 50%;
+	height: 25px;
+	border: 1px solid;
+	border-radius:10px;
+	padding: 5px;
+}
+.btn{
+	width: 125%;
+	height:35px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	font-size: 20px;
+}
+.login-label{
+	font-size: 20px;
+	color: black;
+}

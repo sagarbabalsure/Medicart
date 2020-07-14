@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	{% endblock %}
+	<title>Home</title>
+	<style type="text/css">
+		.nav{
+			display: flex;
+			flex-direction: row;
+			background-color:green;
+			height: 60px;
+			position: sticky;
+		}
+		.head{
+			margin-left: 10px;
+			width: 40%;
+			margin-top: -5px;
+		}
+		.seller_navbar{
+			float: right;
+			margin-top: 18px;
+		}
+		a{
+			font-size: 22px;
+			padding: 18px;
+			color: white;
+			text-decoration: none;
+			transition: all 0.5s ease;
+		}
+		h2{
+			width: 50%;
+			font-size: 25px;
+		}
+		.navbar-links:hover{
+			background-color: white;
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div class="head">
+			<h2>Medicart</h2>
+		</div>
+		<div class="seller_navbar">
+			<a class="navbar-links" href="{{ url_for('added_products') }}">My Products</a>
+			<a class="navbar-links" href="{{ url_for('profile') }}">Profile</a>
+			<a class="navbar-links" href="{{ url_for('add_medicine') }}">Add Medicine</a>
+			<a class="navbar-links" href="{{ url_for('manage_orders') }}">Manage Order</a>
+			<a class="navbar-links" href="{{ url_for('logout') }}">Logout</a>
+		</div>
+	</div>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>

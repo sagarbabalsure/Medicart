@@ -1,0 +1,34 @@
+{% extends 'seller_homepage.html' %}
+{% block head %}
+	{{ super() }}
+	<title>update added products</title>
+	
+{% endblock %}
+{% block content %}
+	<div id="medicine-form">
+		<h2 id="head">Update your medicine</h2>
+		<form action="" method="POST" novalidate>
+
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.medicine_name.label(class_="medicine-label") }}<br>
+				{{ form.medicine_name(size=30,value=data.medicine_name) }}
+			</p>	
+				
+			<p>
+				{{ form.price.label(class_="medicine-label") }}<br>
+				{{ form.price(size=30,value=data.price) }}
+			</p>	
+			<p>
+				{{ form.stock.label(class_="medicine-label") }}<br>
+				{{ form.stock(size=30,value=data.stock) }}
+			</p>
+			
+			<p>
+				{{ form.submit(id="add-medicine-btn") }}
+			</p>
+		</form>
+	</div>
+		
+{% endblock%}
+
