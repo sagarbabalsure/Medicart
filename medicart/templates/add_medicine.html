@@ -1,0 +1,82 @@
+{% extends "seller_homepage.html" %}
+
+{% block head %}
+	{{ super() }}
+	<title>Add medicine</title>
+	<style type="text/css">
+		#medicine-form{
+			margin-left: 350px;
+		}
+		.medicine-label{
+			font-weight: bold;
+			font-size: 18px;
+			color: green;
+		}
+		.medicine-field{
+			border-radius: 5px;
+			height: 22px;
+			border-style: groove;
+			width: 400px;
+			padding: 5px;
+		}
+		#head{
+			text-align : center;
+		}
+		#add-medicine-btn{
+			margin-left: 80px;
+			width: 25%;
+			height: 30px;
+			font-size: 18px;
+			border-radius: 10px;	
+			background-color: rgb(135, 232, 146);
+
+		}
+		#add-medicine-btn:hover{
+			background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+			width: 26%;
+			height: 33px;
+		}
+	</style>
+{% endblock %}
+
+
+{% block content %}
+	<div id="medicine-form">
+		<h2 id="head">Add your medicine</h2>
+		<form action="" method="POST" novalidate>
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.medicine_name.label(class_="medicine-label") }}<br>
+				{{ form.medicine_name(size=30,class_="medicine-field",placeholder="Enter medicine name") }}
+			</p>	
+			<p>
+				{{ form.manufacturer.label(class_="medicine-label") }}<br>
+				{{ form.manufacturer(size=30,class_="medicine-field",placeholder="Enter manufacturer name") }}
+			</p>	
+			<p>
+				{{ form.price.label(class_="medicine-label") }}<br>
+				{{ form.price(size=30,class_="medicine-field",placeholder="Enter medicine price") }}
+			</p>	
+			<p>
+				{{ form.stock.label(class_="medicine-label") }}<br>
+				{{ form.stock(size=30,class_="medicine-field",placeholder="Enter medicine stock") }}
+			</p>
+			<p>
+				{{ form.medicine_description.label(class_="medicine-label") }}<br>
+				{{ form.medicine_description(size=40,class_="medicine-field",placeholder="Enter medicine description") }}
+			</p>
+			<p>
+				{{ form.composition.label(class_="medicine-label") }}<br>
+				{{ form.composition(size=30,class_="medicine-field",placeholder="Enter medicine composition") }}
+			</p>
+			<p>
+				{{ form.precaution.label(class_="medicine-label") }}<br>
+				{{ form.precaution(size=30,class_="medicine-field",placeholder="Enter medicine precaution") }}
+			</p>	
+			
+			<p>
+				{{ form.submit(id="add-medicine-btn") }}
+			</p>
+		</form>
+	</div>
+{% endblock %}

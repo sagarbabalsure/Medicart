@@ -1,0 +1,206 @@
+{% if mode == 'Buyer' %}
+	{% extends 'buyer_homepage.html' %}
+{% else %}
+	{% extends "seller_homepage.html" %}
+{% endif %}
+
+
+{% block head %}
+	{{ super() }}
+	{% if mode %}
+	<style type="text/css">
+		.edit-profile{
+			width: 100%;
+		}
+		.edit-profile-label{
+			font-weight: bold;
+			color: blue;
+			font-size: 18px;
+		}
+		.edit-profile-field{
+			border:0.5px solid black;	
+			border-radius: 8px;
+			width: 70%;
+			padding: 5px;
+		}
+		form{
+			margin-left: 200px;
+		}
+		.heading-for-edit-profile{
+			margin-top: -20px;	
+			float: left;
+			width: 10%;
+		}
+		.edit-profile-form{
+			margin-top: 30px;
+			margin-left: 30px;
+		}
+		#edit-profile-btn{
+			width: 150px;
+			height: 30px;
+			border:1px solid black;
+			background-color: lightblue;
+			border-radius: 5px;
+			font-size: 18px;
+		}
+		#edit-profile-btn:hover{
+			border:1px solid blue;
+			background-color: black;
+			color: white;
+		}
+		a{
+			text-decoration: none;
+		}
+		table,th,td{
+			padding:10px;
+			text-align: left;	
+		}
+		td{
+			width: 500px;
+		}
+	</style>
+	{% else %}
+	<style type="text/css">
+		.edit-profile{
+			width: 100%;
+		}
+		.edit-profile-label{
+			font-weight: bold;
+			color: green;
+			font-size: 18px;
+		}
+		.edit-profile-field{
+			border:0.5px solid black;	
+			border-radius: 8px;
+			width: 70%;
+			padding: 10px;
+		}
+		form{
+			margin-left: 200px;
+		}
+		.heading-for-edit-profile{
+			margin-top: -20px;	
+			float: left;
+			width: 20%;
+		}
+		.edit-profile-form{
+			margin-top: 30px;
+			margin-left: 30px;
+		}
+		#edit-profile-btn{
+			width: 150px;
+			height: 30px;
+			border:1px solid black;
+			background-color: lightblue;
+			border-radius: 5px;
+			font-size: 18px;
+		}
+		#edit-profile-btn:hover{
+			border:1px solid blue;
+			background-color: black;
+			color: white;
+		}
+		a{
+			text-decoration: none;
+		}
+		table,th,td{
+			padding:10px;
+			text-align: left;	
+		}
+		td{
+			width: 500px;
+		}
+	</style>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if mode %}
+	<div class="edit-profile">
+		<div class="heading-for-edit-profile">
+			<h2>Edit profile</h2>
+		</div>
+		<div class="edit-profile-form">
+			<form action="" method="POST" novalidate>
+				{{ form.hidden_tag() }}
+				<table>
+					<tr>
+						<th>{{ form.name.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.name(size=30,value=data.name,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.username.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.username(size=30,value=data.username,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.email.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.email(size=30,value=data.email,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.mobile_no.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.mobile_no(size=30,value=data.mobile_no,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.address.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.address(size=30,value=data.address,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.about_me.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.about_me(size=30,value=data.about_me,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>{{ form.submit(id="edit-profile-btn") }}</td>
+					</tr>
+				</table>
+			
+		</form>
+
+		</div>
+		
+	</div>	
+{% else %}
+<div class="edit-profile">
+		<div class="heading-for-edit-profile">
+			<h2>Edit profile</h2>
+		</div>
+		<div class="edit-profile-form">
+			<form action="" method="POST" novalidate>
+				{{ form.hidden_tag() }}
+				<table>
+					<tr>
+						<th>{{ form.name.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.name(size=30,value=data.name,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.username.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.username(size=30,value=data.username,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.email.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.email(size=30,value=data.email,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.mobile_no.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.mobile_no(size=30,value=data.mobile_no,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.company.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.company(size=30,value=data.company_name,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th>{{ form.about_me.label(class_="edit-profile-label") }}</th>
+						<td>{{ form.about_me(size=30,value=data.about_me,class_="edit-profile-field") }}</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>{{ form.submit(id="edit-profile-btn") }}</td>
+					</tr>
+				</table>
+			
+		</form>
+		</div>
+		
+	</div>	
+{% endif %}
+{% endblock %}

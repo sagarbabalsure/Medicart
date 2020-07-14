@@ -1,0 +1,209 @@
+{% if mode == 'Buyer' %}
+	{% extends 'buyer_homepage.html' %}
+{% else %}
+	{% extends "seller_homepage.html" %}
+{% endif %}
+
+{% block head %}
+	{{ super() }}
+	{% if mode %}
+	<style type="text/css">
+		table{
+			margin-top: 30px;
+			text-align: left;
+			margin-left: 100px;
+		}
+		.vline{
+			border-left:1px solid black;
+			height: 400px;
+			margin-left: 150px;
+		}
+		tr,th,td{
+			padding: 10px 20px 20px 20px;
+			font-size: 18px;
+			font-family: Arial;
+
+		}
+		a{
+			text-decoration: none;
+		}
+		.profile{
+			display: flex;
+			flex-direction: row;
+		}
+		#edit-profile-link{
+			float: right;
+			margin-top: -40px;
+			border:1px solid black;
+			border-style: groove;
+			border-radius: 5px;
+			background-color: rgb(150, 153, 235);
+			padding: 5px;
+
+		}
+		#view-order-link{
+			float: right;
+			margin-top: -40px;
+			margin-right: 120px;
+			border:1px solid black;
+			border-style: groove;
+			border-radius: 5px;
+			background-color: rgb(150, 153, 235);
+			padding: 5px;
+
+		}
+		#edit-profile-link:hover{
+			border:1px solid rgb(150, 153, 235);
+			background-color: black;
+		}
+	</style>
+	{% else %}
+	<style type="text/css">
+		th,td{
+			text-align: left;
+			padding: 10px;
+			font-size: 20px;
+		}
+		.seller-profile{
+			display: flex;
+			flex-direction: row;
+		}
+		.links a{
+			color: black;
+			border:1px solid black;
+			border-style: groove;
+			border-radius: 10px;
+			background-color: rgb(47, 173, 83);
+			color: black;
+
+		}
+		.links a:hover{
+			background-color: green;
+			color: white;
+		}
+		.links li{
+			list-style-type: none;
+			padding: 20px;
+			height: 50px;
+
+		}
+		.vline{
+			border-left:1px solid black;
+			height: 400px;
+			margin-left: 20px;
+		}
+		.seller-data{
+			margin-left: 50px;
+			margin-top: -100px;
+
+		}
+	</style>
+	{% endif %}
+{% endblock %}
+
+
+{% block content %}
+
+	{% if mode %}
+	<div>
+		<h1>My profile</h1>
+		<a id="edit-profile-link" href="{{ url_for('edit_profile') }}">Edit Profile</a>
+		<a id="view-order-link" href="{{ url_for('view_orders') }}">View Orders</a>
+		<hr><hr>
+
+		<div class="profile">
+			<div class="vline"></div>
+			<br><br>
+			<div class="profile-div">
+				<table>
+				<tr>
+					<th>Name(buyer): </th>
+					<td>{{ data.name }}</td>
+				</tr>
+				<tr>
+					<th>Email: </th>
+					<td>{{ data.email }}</td>
+				</tr>
+				<tr>
+					<th>Username: </th>
+					<td>{{ data.username }}</td>
+				</tr>
+				<tr>
+					<th>Mode: </th>
+					<td>{{ data.mode }}</td>
+				</tr>
+				<tr>
+					<th>Address: </th>
+					<td>{{ data.address }}</td>
+				</tr>
+				<tr>
+					<th>Mobile NUmber: </th>
+					<td>{{ data.mobile_no }}</td>
+				</tr>
+				<tr>
+					<th>About me: </th>
+					<td>{{ data.about_me }}</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+		{% else %}
+		<div>
+		<h1>My profile</h1>
+		<hr>
+		<div class="seller-profile">
+			<div class="links">
+				<li><a href="{{ url_for('edit_profile') }}">Edit Profile</a></li>
+			</div>
+			<div class="vline"></div>
+			<div class="seller-data">
+				<table>
+					<tr>
+						<th>Name: </th>
+						<td>{{ data.name }}</td><br>
+					</tr>
+					<tr>
+						<th>Email: </th>
+						<td>{{ data.email }}</td><br>
+					</tr>
+					<tr>
+						<th>Username: </th>
+						<td>{{ data.username }}</td><br>
+					</tr>
+					<tr>
+						<th>Mode: </th>
+						<td>{{ data.mode }}</td><br>
+					</tr>
+					<tr>
+						<th>Company: </th>
+						<td>{{ data.company_name }}</td><br>
+					</tr>
+					<tr>
+						<th>Mobile Number: </th>
+						<td>{{ data.mobile_no }}</td><br>
+					</tr>
+					<tr>
+						<th>About me: </th>
+						<td>{{ data.about_me }}</td><br>
+					</tr>
+				</table>
+			</div>
+		</div><hr>
+	</div>
+			{% endif %}
+
+		<hr><hr>
+	</div>
+		
+	<div>
+		{% with profile_msgs=get_flashed_messages() %}
+			{% if profile_msgs %}
+				{% for msg in profile_msgs %}
+					{{ msg }}
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	</div>
+		
+{% endblock%}
+

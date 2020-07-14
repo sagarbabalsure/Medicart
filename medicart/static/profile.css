@@ -1,0 +1,48 @@
+table{
+			margin-top: 30px;
+			text-align: left;
+			margin-left: 100px;
+	}
+.vline{
+	border-left:1px solid black;
+	height: 400px;
+	margin-left: 150px;
+}
+tr,th,td{
+	padding: 10px 20px 20px 20px;
+	font-size: 18px;
+	font-family: Arial;
+
+}
+a{
+	text-decoration: none;
+}
+.profile{
+	display: flex;
+	flex-direction: row;
+}
+#edit-profile-link{
+	float: right;
+	margin-top: -40px;
+	border:1px solid black;
+	border-style: groove;
+	border-radius: 5px;
+	background-color: rgb(150, 153, 235);
+	padding: 5px;
+
+}
+#view-order-link{
+	float: right;
+	margin-top: -40px;
+	margin-right: 120px;
+	border:1px solid black;
+	border-style: groove;
+	border-radius: 5px;
+	background-color: rgb(150, 153, 235);
+	padding: 5px;
+
+}
+#edit-profile-link:hover{
+	border:1px solid rgb(150, 153, 235);
+	background-color: black;
+}
