@@ -8,12 +8,12 @@
 
 {% block content %}
 	<div>
-		{% for rows in data %}
-			<div>
-				<p>Medicine Name:{{rows[0]['medicine_name']}}</p>
-				<p>Name of Buyer:{{rows[1]['name']}}</p> 
-				<p>Deliver to:{{rows[1]['address']}}</p> <br>
-			</div><hr>
+		{% for row in data %}
+				<div>
+					<p>Medicine Name:{{row[0]}}</p>
+					<p>Name of Buyer:{{row[1]}}</p> 
+					<p>Deliver to:{{row[2]}}</p> <br>
+				</div><hr>
 		{% endfor %}
 	</div>
 	

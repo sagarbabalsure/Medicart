@@ -4,15 +4,15 @@
 	<title>view orders</title>
 </head>
 <body>
-	{% for rows in data %}
-		{% for row in rows %}
+	{% for row in data %}
+		{% if row %}
 		 	<div class="choose-medicine">
-			 		<h3>{{row["medicine_name"]}}</h3>
-			 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
-			 		<p><b style="font-size: 20px;">Rs.{{row["price"]}}</b>(per unit)</p>
-			 		<p>Description:{{row['description']}}</p>
+			 		<h3>{{row.medicine_name}}</h3>
+			 		<p style="font-style: italic;">By <b>{{row.manufacturer}}</b></p>
+			 		<p><b style="font-size: 20px;">Rs.{{row.price}}</b>(per unit)</p>
+			 		<p>Description:{{row.description}}</p>
 		 		</div><hr>
-		 {% endfor %}<br>
+		 {% endif %}<br>
 	{% endfor %}
 </body> 
 </html>

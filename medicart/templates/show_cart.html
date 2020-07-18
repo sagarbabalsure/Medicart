@@ -36,8 +36,8 @@
 </head>
 <body>
 	<div class="multiple-div">
-		{% for rows in data %}
-			{% for row in rows %}
+		{% for row in data %}
+			{% if row %}
 				<div class="choose-medicine">
 			 		<h3>{{row["medicine_name"]}}</h3>
 			 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
@@ -48,7 +48,7 @@
 			 			<a href="{{ url_for('remove_from_cart',product_id=row['product_id'])}}">Remove</a>
 			 		</div>
 		 		</div>
-			{% endfor %}<hr>
+			{% endif %}<hr>
 		{% endfor %}<br>
 	</div>
 </body>

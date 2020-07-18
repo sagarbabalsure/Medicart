@@ -30,21 +30,21 @@
 {% block content %}
 <div>
 	<div class="main_page">
-		{% for row in data %}
+		{% if data %}
 			<div class="product-div1">
-				<h2>{{row["medicine_name"]}}</h2>
-		 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
-		 		<p><b style="font-size: 20px;">Rs.{{row["price"]}}</b>(per unit)</p>
-		 		<p><b>Available Stock: </b>{{row["stock"]}}</p><br>
-		 		<a class="btns" href="{{ url_for('buy',product_id=row['product_id']) }}">Buy</a>
-		 		<a class="btns" href="{{ url_for('add_to_cart',product_id=row['product_id']) }}">Add To Cart</a>
+				<h2>{{data["medicine_name"]}}</h2>
+		 		<p style="font-style: italic;">By <b>{{data["manufacturer"]}}</b></p>
+		 		<p><b style="font-size: 20px;">Rs.{{data["price"]}}</b>(per unit)</p>
+		 		<p><b>Available Stock: </b>{{data["stock"]}}</p><br>
+		 		<a class="btns" href="{{ url_for('buy',product_id=data['product_id']) }}">Buy</a>
+		 		<a class="btns" href="{{ url_for('add_to_cart',product_id=data['product_id']) }}">Add To Cart</a>
 			</div>
 			<div class="product-div1">
-				<p><b>Description:</b> {{ row['description'] }}</p>
-				<p><b>composition:</b> {{ row['composition'] }}</p>
-				<p><b>Precaution:</b> {{ row['precaution'] }}</p>
+				<p><b>Description:</b> {{ data['description'] }}</p>
+				<p><b>composition:</b> {{ data['composition'] }}</p>
+				<p><b>Precaution:</b> {{ data['precaution'] }}</p>
 			</div>
-			{% endfor %}
+			{% endif %}
 	
 	</div>
 </div>

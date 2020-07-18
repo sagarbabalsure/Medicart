@@ -60,6 +60,9 @@
 			<p>
 				{{ form.stock.label(class_="medicine-label") }}<br>
 				{{ form.stock(size=30,class_="medicine-field",placeholder="Enter medicine stock") }}
+				{% for error in form.stock.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
 			</p>
 			<p>
 				{{ form.medicine_description.label(class_="medicine-label") }}<br>

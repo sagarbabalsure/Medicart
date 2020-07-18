@@ -22,10 +22,10 @@
 		font-size: 20px;
 	}
   </style>
-  {% for row in data %}
+  {% if data %}
 		 <script type="text/javascript">
 	  		function CalcTotalCost() {
-	  			var cost = '{{ row['price'] }}';
+	  			var cost = '{{ data['price'] }}';
 	  			var quantity = document.getElementById('quan').value;
 	  			if(quantity > 0){
 		  			Total_cost = cost*quantity;
@@ -39,18 +39,18 @@
 	  			
 	  		}
 		</script>
-  {% endfor %}
+  {% endif %}
  
 {% endblock %}
 {% block content %}
 	<div class="main_page">
-		{% for row in data %}
-		<form action="{{ url_for('confirm_order',product_id=row['product_id'],seller_id=row['seller_id']) }}" method="POST">
+		{% if data %}
+		<form action="{{ url_for('confirm_order',product_id=data['product_id'],seller_id=data['Seller_id']) }}" method="POST">
 			<div class="product-div1" np-app=" ">
 				<h2>Medicine Details</h2>
-				<h3>{{row["medicine_name"]}}</h3>
-		 		<p style="font-style: italic;">By <b>{{row["manufacturer"]}}</b></p>
-		 		<p><b style="font-size: 20px;">Rs.<span id="demo">{{row["price"]}}</span></b>(per unit)</p>
+				<h3>{{data["medicine_name"]}}</h3>
+		 		<p style="font-style: italic;">By <b>{{data["manufacturer"]}}</b></p>
+		 		<p><b style="font-size: 20px;">Rs.<span id="demo">{{data["price"]}}</span></b>(per unit)</p>
 		 			<input id="quan" type="number" name="quantity" placeholder="Enter quantity" onkeyup="CalcTotalCost()">
 		 		<hr>
 		 	</div>
@@ -64,5 +64,5 @@
 		 		
 		</form>
 			
-			{% endfor %}
+			{% endif %}
 {% endblock %}
